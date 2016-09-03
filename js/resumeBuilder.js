@@ -5,7 +5,7 @@ This is empty on purpose! Your code to build the resume will go here.
 var bio = {
 	"name": "Adam McMahon",
 	"role": "Fullstack Web Developer",
-	"summmary": "Developer, Marketer, Smartass",
+	"summmary": "Fullstack Developer",
 	"pic": "images/fry.jpg",
 	"contacts": {
 		"github": "https://github.com/obelesk411",
@@ -15,7 +15,7 @@ var bio = {
 		"phone": "ask"
 	},
 	"age": 28,
-	"skills": ["PHP", "MySQL", "HTML5", "CSS", "Javascript"]
+	"skills": ["PHP", "MySQL", "HTML5", "CSS", "Javascript","MongoDB","Wordpress","Codeigniter"]
 };
 
 var work = {
@@ -24,13 +24,15 @@ var work = {
 		"role": "Senior Web Developer",
 		"location": "Denver, CO",
 		"start_year": "2015",
-		"end_year": "PRESENT"
+		"end_year": "PRESENT",
+		"tags": ["PHP", "MySQL", "HTML5", "CSS", "Javascript"]
 	}, {
 		"employer": "Code For Newark",
 		"role": "Volunteer Teacher",
 		"location": "Newark, NJ",
 		"start_year": "2015",
-		"end_year": "PRESENT"
+		"end_year": "PRESENT",
+		"tags": ["PHP", "MySQL", "HTML5", "CSS", "Javascript", "Wordpress"]
 	}, {
 		"employer": "P800x",
 		"role": "Senior Web Developer",
@@ -86,6 +88,10 @@ var work = {
 				.append('<div style="clear:both"></div>')
 				.append(HTMLworkLocation.replace("%data%",this.jobs[job].location))
 				.append('<div style="clear:both"></div>');
+			
+			if(this.jobs[job].tags !== undefined) {
+				$(".work-entry:last").attr("skills",this.jobs[job].tags.join(" "));
+			}
 		}
 	}
 };
@@ -101,13 +107,13 @@ var education = {
 		"title": "One Month Rails",
 		"school": "One Month",
 		"location": "New York, NY",
-		"url": "",
+		"url": "https://onemonth.com/",
 		"year": "2015"
 	}, {
 		"title": "One Month Startup",
 		"school": "One Month",
 		"location": "New York, NY",
-		"url": "",
+		"url": "https://onemonth.com/",
 		"year": "2016"
 	}, {
 		"title": "Understanding Regular Expressions",
@@ -119,13 +125,13 @@ var education = {
 		"title": "Market Campus Certification",
 		"school": "Market Campus",
 		"location": "Salt Lake City, UT",
-		"url": "",
+		"url": "https://marketcampus.com/",
 		"year": "2016"
 	}, {
 		"title": "Hubspot Inbound Certification",
 		"school": "Hubspot",
 		"location": "Boston, MA",
-		"url": "",
+		"url": "http://certification.hubspot.com/inbound-certification",
 		"year": "2016"
 	}],
 	"display": function() {
@@ -145,22 +151,22 @@ var projects = {
 	"projects": [{
 		"title": "Pest Tracker",
 		"year": "2007",
-		"image": "",
-		"description": ""
+		"image": "images/the_projects.jpg",
+		"description": "A tracking system for pesticide usage for the county"
 	}, {
 		"title": "Web Scraper",
 		"year": "2008",
-		"image": "",
-		"description": ""
+		"image": "images/the_projects.jpg",
+		"description": "A scaper that pulls thousands of complaints from a consumer complaint website"
 	}, {
 		"title": "Refundo",
-		"year": "",
-		"image": "",
-		"description": ""
+		"year": "2011",
+		"image": "images/the_projects.jpg",
+		"description": "Tax refund software"
 	}, {
 		"title": "Pinterest Clone",
-		"year": "",
-		"image": "",
+		"year": "2015",
+		"image": "images/the_projects.jpg",
 		"description": "A Pinterest clone build on Rails"
 	}],
 	"display": function() {
@@ -202,18 +208,41 @@ $("#topContacts")
 	.append(HTMLemail.replace("%data%",bio.contacts.email))
 	.append(HTMLmobile.replace("%data%",bio.contacts.phone));
 
+var narrowSkills = function() {
+	console.log($(this).text());
+
+	// loop through jobs,projects,education
+	$('.work-entry').each(function(){
+		if(!$(this).attr('skills')) {
+			$(this).slideToggle();
+
+		} else if($(this).attr('skills').search($(this).text()) !== -1) {
+			console.log('made it');
+			console.log($(this).attr('skills').search($(this).text()));
+			$(this).css("border","green solid 3px");
+		}
+	});
+	// if skill and hidden show
+	// if not skill and shown hide
+};
+
 if(bio.skills.length !== 0)
-	for(skill in bio.skills) $("#skills").append(HTMLskills.replace("%data%",bio.skills[skill]));
+	for(skill in bio.skills) {
+		$("#skills").append(HTMLskills.replace("%data%",bio.skills[skill]));
+	}
+
+	$("#skills li").each(function(){
+		$(this).css("cursor","pointer");
+		$(this).bind("click",narrowSkills);
+	});
+
+
 
 work.display();
 
 projects.display();
 
 education.display();
-
-$(document).click(function(loc){
-	logClicks(loc.pageX,loc.pageY);
-});
 
 $('button').click(function(){
 
