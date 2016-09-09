@@ -38,43 +38,50 @@ var work = {
 		"role": "Senior Web Developer",
 		"location": "Whitestone, NJ",
 		"start_year": "2014",
-		"end_year": "2015"
+		"end_year": "2015",
+		"tags": ["PHP", "MySQL", "Javascript", "MongoDB"]
 	}, {
 		"employer": "Rising Results",
 		"role": "Senior Web Developer",
 		"location": "Staten Island, NY",
 		"start_year": "2013",
-		"end_year": "2013"
+		"end_year": "2013",
+		"tags": ["PHP", "MySQL", "HTML5", "CSS", "Javascript"]
 	}, {
 		"employer": "Refundo",
 		"role": "Web Developer",
 		"location": "Elizabeth, NJ",
 		"start_year": "2011",
-		"end_year": "2013"
+		"end_year": "2013",
+		"tags": ["PHP", "MySQL", "HTML5", "CSS", "Javascript", "MongoDB", "Codeigniter"]
 	}, {
 		"employer": "Bolt Web Solutions",
 		"role": "Web Developer",
 		"location": "Brooklyn, NY",
 		"start_year": "2010",
-		"end_year": "2011"
+		"end_year": "2011",
+		"tags": ["PHP", "MySQL", "HTML5", "CSS", "Javascript", "Wordpress", "Codeigniter"]
 	}, {
 		"employer": "Rushtax",
 		"role": "Web Developer",
 		"location": "Elizabeth, NJ",
 		"start_year": "2009",
-		"end_year": "2010"
+		"end_year": "2010",
+		"tags": ["PHP", "MySQL", "HTML5", "CSS", "Javascript", "Codeigniter"]
 	}, {
 		"employer": "Accutechi",
 		"role": "IT Consultant",
 		"location": "Edison, NJ",
 		"start_year": "2008",
-		"end_year": "2009"
+		"end_year": "2009",
+		"tags": ["PHP", "MySQL"]
 	}, {
 		"employer": "Customer Support Inc.",
 		"role": "IT Consultant",
 		"location": "Jersey City, NJ",
 		"start_year": "2008",
-		"end_year": "2008"
+		"end_year": "2008",
+		"tags": ["PHP", "MySQL", "Javascript"]
 	}],
 	"display": function() {
 		for(job in this.jobs) {
@@ -209,24 +216,26 @@ $("#topContacts")
 	.append(HTMLmobile.replace("%data%",bio.contacts.phone));
 
 var narrowSkills = function() {
-	console.log($(this).text());
+	
+	skill = $(this).text();
+	$('#skill').text('('+skill+')');
 
 	// loop through jobs,projects,education
 	$('.work-entry').each(function(){
-		if(!$(this).attr('skills')) {
-			$(this).slideToggle();
+		skills = $(this).attr('skills');
 
-		} else if($(this).attr('skills').search($(this).text()) !== -1) {
-			console.log('made it');
-			console.log($(this).attr('skills').search($(this).text()));
-			$(this).css("border","green solid 3px");
+		if(typeof skills == undefined || typeof skills == false) {
+			$(this).hide();
+		} else if(skills.search(skill) != -1) {
+			$(this).show();
+		} else {
+			$(this).hide();
 		}
+
 	});
-	// if skill and hidden show
-	// if not skill and shown hide
 };
 
-if(bio.skills.length !== 0)
+if(bio.skills.length !== 0) {
 	for(skill in bio.skills) {
 		$("#skills").append(HTMLskills.replace("%data%",bio.skills[skill]));
 	}
@@ -235,8 +244,7 @@ if(bio.skills.length !== 0)
 		$(this).css("cursor","pointer");
 		$(this).bind("click",narrowSkills);
 	});
-
-
+}
 
 work.display();
 
