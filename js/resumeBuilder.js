@@ -12,7 +12,7 @@ var bio = {
 		"email": "ask",
 		"phone": "ask"
 	},
-	"welcomeMessage": "Fullstack Web Developer",
+	"welcomeMessage": "More than 8 years of experience",
 	"pic": "images/me.png",
 	"skills": ["PHP", "MySQL", "HTML5", "CSS", "Javascript","MongoDB","Wordpress","Codeigniter"],
 	"age": 28,
