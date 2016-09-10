@@ -5,8 +5,6 @@ This is empty on purpose! Your code to build the resume will go here.
 var bio = {
 	"name": "Adam McMahon",
 	"role": "Fullstack Web Developer",
-	"summmary": "Fullstack Developer",
-	"pic": "images/fry.jpg",
 	"contacts": {
 		"github": "https://github.com/obelesk411",
 		"website": "https://mcmahonadam.com/",
@@ -14,73 +12,101 @@ var bio = {
 		"email": "ask",
 		"phone": "ask"
 	},
+	"welcomeMessage": "Fullstack Web Developer",
+	"pic": "images/me.png",
+	"skills": ["PHP", "MySQL", "HTML5", "CSS", "Javascript","MongoDB","Wordpress","Codeigniter"],
 	"age": 28,
-	"skills": ["PHP", "MySQL", "HTML5", "CSS", "Javascript","MongoDB","Wordpress","Codeigniter"]
+	"display": function() {
+
+		$("#header")
+			.prepend(HTMLheaderName.replace("%data%",this.name)+HTMLheaderRole.replace("%data%",this.role))
+			.append(HTMLbioPic.replace("%data%",this.pic))
+			.append(HTMLwelcomeMsg.replace("%data%",this.welcomeMessage))
+			.append(HTMLskillsStart);
+
+		$("#topContacts")
+			.append(HTMLgithub.replace("%data%",this.contacts.github))
+			.append(HTMLblog.replace("%data%",this.contacts.website))
+			.append(HTMLlocation.replace("%data%",this.contacts.location))
+			.append(HTMLemail.replace("%data%",this.contacts.email))
+			.append(HTMLmobile.replace("%data%",this.contacts.phone));
+
+		if(this.skills.length !== 0) {
+			for(skill in this.skills) {
+				$("#skills").append(HTMLskills.replace("%data%",this.skills[skill]));
+			}
+
+			$("#skills li").each(function(){
+				$(this).css("cursor","pointer");
+				$(this).bind("click",narrowSkills);
+			});
+		}
+	}
 };
 
 var work = {
 	"jobs": [{
 		"employer": "PIXO",
-		"role": "Senior Web Developer",
+		"title": "Senior Web Developer",
 		"location": "Denver, CO",
-		"start_year": "2015",
-		"end_year": "PRESENT",
+		"dates": "2015 - PRESENT",
+		"description": "Tackled Concrete5 and node.js projects",
 		"tags": ["PHP", "MySQL", "HTML5", "CSS", "Javascript"]
 	}, {
 		"employer": "Code For Newark",
-		"role": "Volunteer Teacher",
+		"title": "Volunteer Teacher",
 		"location": "Newark, NJ",
-		"start_year": "2015",
-		"end_year": "PRESENT",
+		"dates": "2015 - PRESENT",
+		"description": "Helped beginners tackle web development",
 		"tags": ["PHP", "MySQL", "HTML5", "CSS", "Javascript", "Wordpress"]
 	}, {
 		"employer": "P800x",
-		"role": "Senior Web Developer",
+		"title": "Senior Web Developer",
 		"location": "Whitestone, NJ",
-		"start_year": "2014",
-		"end_year": "2015",
+		"dates": "2014 - 2015",
+		"description": "Helped build and maintain utility locating software",
 		"tags": ["PHP", "MySQL", "Javascript", "MongoDB"]
 	}, {
 		"employer": "Rising Results",
-		"role": "Senior Web Developer",
+		"title": "Senior Web Developer",
 		"location": "Staten Island, NY",
-		"start_year": "2013",
-		"end_year": "2013",
+		"dates": "2013",
+		"description": "Repaired and maintained custom built lead management system",
 		"tags": ["PHP", "MySQL", "HTML5", "CSS", "Javascript"]
 	}, {
 		"employer": "Refundo",
-		"role": "Web Developer",
+		"title": "Web Developer",
 		"location": "Elizabeth, NJ",
-		"start_year": "2011",
-		"end_year": "2013",
+		"dates": "2011 - 2013",
+		"description": "Helped build and maintain tax software",
 		"tags": ["PHP", "MySQL", "HTML5", "CSS", "Javascript", "MongoDB", "Codeigniter"]
 	}, {
 		"employer": "Bolt Web Solutions",
-		"role": "Web Developer",
+		"title": "Web Developer",
 		"location": "Brooklyn, NY",
-		"start_year": "2010",
-		"end_year": "2011",
+		"dates": "2010 - 2011",
+		"description": "Juggled many projects for an Agency",
 		"tags": ["PHP", "MySQL", "HTML5", "CSS", "Javascript", "Wordpress", "Codeigniter"]
 	}, {
 		"employer": "Rushtax",
-		"role": "Web Developer",
+		"title": "Web Developer",
 		"location": "Elizabeth, NJ",
-		"start_year": "2009",
-		"end_year": "2010",
+		"dates": "2009 - 2010",
+		"description": "Helped build and maintain tax software",
 		"tags": ["PHP", "MySQL", "HTML5", "CSS", "Javascript", "Codeigniter"]
 	}, {
 		"employer": "Accutechi",
-		"role": "IT Consultant",
+		"title": "IT Consultant",
 		"location": "Edison, NJ",
-		"start_year": "2008",
-		"end_year": "2009",
+		"dates": "2008 - 2009",
+		"description": "Built and maintained several projects",
 		"tags": ["PHP", "MySQL"]
 	}, {
 		"employer": "Customer Support Inc.",
-		"role": "IT Consultant",
+		"title": "IT Consultant",
 		"location": "Jersey City, NJ",
-		"start_year": "2008",
-		"end_year": "2008",
+		"dates": "2008",
+		"description": "Built and maintained several projects",
 		"tags": ["PHP", "MySQL", "Javascript"]
 	}],
 	"display": function() {
@@ -89,11 +115,11 @@ var work = {
 				.append(HTMLworkStart)
 				.find(".work-entry:last")
 				.append(HTMLworkEmployer.replace("%data%",this.jobs[job].employer)
-					+HTMLworkTitle.replace("%data%",this.jobs[job].role))
-				.append(HTMLworkDates.replace("%data%",this.jobs[job].start_year
-					+" - "+this.jobs[job].end_year))
+					+HTMLworkTitle.replace("%data%",this.jobs[job].title))
+				.append(HTMLworkDates.replace("%data%",this.jobs[job].dates))
 				.append('<div style="clear:both"></div>')
 				.append(HTMLworkLocation.replace("%data%",this.jobs[job].location))
+				.append(HTMLworkDescription.replace("%data%",this.jobs[job].description))
 				.append('<div style="clear:both"></div>');
 			
 			if(this.jobs[job].tags !== undefined) {
@@ -104,51 +130,54 @@ var work = {
 };
 
 var education = {
-	"schools": [{
+	"onlineCourses": [{
 		"title": "Front-end Developer Nanodegree",
 		"school": "Udacity",
-		"location": "Mountain View, CA",
+		"dates": "2016",
 		"url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001",
-		"year": "2016"
+		"location": "Mountain View, CA"
 	}, {
 		"title": "One Month Rails",
 		"school": "One Month",
-		"location": "New York, NY",
+		"dates": "2015",
 		"url": "https://onemonth.com/",
-		"year": "2015"
+		"location": "New York, NY"
 	}, {
 		"title": "One Month Startup",
 		"school": "One Month",
-		"location": "New York, NY",
+		"dates": "2016",
 		"url": "https://onemonth.com/",
-		"year": "2016"
+		"location": "New York, NY"
 	}, {
 		"title": "Understanding Regular Expressions",
 		"school": "Laracasts",
-		"location": "REMOTE",
+		"dates": "2016",
 		"url": "https://laracasts.com/",
-		"year": "2016"
+		"location": "REMOTE"
 	}, {
 		"title": "Market Campus Certification",
-		"school": "Market Campus",
-		"location": "Salt Lake City, UT",
+		"school": "Market Campus",		
+		"dates": "2016",
 		"url": "https://marketcampus.com/",
-		"year": "2016"
+		"location": "Salt Lake City, UT"
 	}, {
 		"title": "Hubspot Inbound Certification",
 		"school": "Hubspot",
-		"location": "Boston, MA",
+		"dates": "2016",
 		"url": "http://certification.hubspot.com/inbound-certification",
-		"year": "2016"
+		"location": "Cambridge, MA"
 	}],
 	"display": function() {
-		for(course in this.schools) {
+		$("#education").append(HTMLonlineClasses);
+
+		for(course in this.onlineCourses) {
 			$("#education")
 				.append(HTMLschoolStart)
 				.find(".education-entry:last")
-				.append(HTMLonlineTitle.replace("%data%",this.schools[course].title)
-					+HTMLonlineSchool.replace("%data%",this.schools[course].school))
-				.append(HTMLonlineDates.replace("%data%",this.schools[course].year))
+				.append(HTMLonlineTitle.replace("%data%",this.onlineCourses[course].title)
+					+HTMLonlineSchool.replace("%data%",this.onlineCourses[course].school))
+				.append(HTMLonlineDates.replace("%data%",this.onlineCourses[course].dates))
+				.append(HTMLonlineURL.replace("%data%",this.onlineCourses[course].url))
 				.append('<div style="clear:both"></div>');
 		}
 	}
@@ -157,24 +186,24 @@ var education = {
 var projects = {
 	"projects": [{
 		"title": "Pest Tracker",
-		"year": "2007",
-		"image": "images/the_projects.jpg",
-		"description": "A tracking system for pesticide usage for the county"
+		"dates": "2007",
+		"description": "A tracking system for pesticide usage for the county",
+		"images": "images/the_projects.jpg"
 	}, {
 		"title": "Web Scraper",
-		"year": "2008",
-		"image": "images/the_projects.jpg",
-		"description": "A scaper that pulls thousands of complaints from a consumer complaint website"
+		"dates": "2008",
+		"description": "A scaper that pulls thousands of complaints from a consumer complaint website",
+		"images": "images/the_projects.jpg"
 	}, {
 		"title": "Refundo",
-		"year": "2011",
-		"image": "images/the_projects.jpg",
-		"description": "Tax refund software"
+		"dates": "2011",
+		"description": "Tax refund software",
+		"images": "images/the_projects.jpg"
 	}, {
 		"title": "Pinterest Clone",
-		"year": "2015",
-		"image": "images/the_projects.jpg",
-		"description": "A Pinterest clone build on Rails"
+		"dates": "2015",
+		"description": "A Pinterest clone build on Rails",
+		"images": "images/the_projects.jpg"
 	}],
 	"display": function() {
 		for(project in this.projects) {
@@ -182,9 +211,9 @@ var projects = {
 				.append(HTMLprojectStart)
 				.find(".project-entry:last")
 				.append(HTMLprojectTitle.replace("%data%",this.projects[project].title))
-				.append(HTMLprojectDates.replace("%data%",this.projects[project].year))
+				.append(HTMLprojectDates.replace("%data%",this.projects[project].dates))
 				.append(HTMLprojectDescription.replace("%data%",this.projects[project].description))
-				.append(HTMLprojectImage.replace("%data%",this.projects[project].image))
+				.append(HTMLprojectImage.replace("%data%",this.projects[project].images))
 
 		}
 	}
@@ -201,19 +230,6 @@ function inName(name) {
 	
 	return firstName+' '+lastName;
 }
-
-$("#header")
-	.prepend(HTMLheaderName.replace("%data%",bio.name)+HTMLheaderRole.replace("%data%",bio.role))
-	.append(HTMLbioPic.replace("%data%",bio.pic))
-	.append(HTMLwelcomeMsg.replace("%data%",bio.summmary))
-	.append(HTMLskillsStart);
-
-$("#topContacts")
-	.append(HTMLgithub.replace("%data%",bio.contacts.github))
-	.append(HTMLblog.replace("%data%",bio.contacts.website))
-	.append(HTMLlocation.replace("%data%",bio.contacts.location))
-	.append(HTMLemail.replace("%data%",bio.contacts.email))
-	.append(HTMLmobile.replace("%data%",bio.contacts.phone));
 
 var narrowSkills = function() {
 	
@@ -235,25 +251,12 @@ var narrowSkills = function() {
 	});
 };
 
-if(bio.skills.length !== 0) {
-	for(skill in bio.skills) {
-		$("#skills").append(HTMLskills.replace("%data%",bio.skills[skill]));
-	}
-
-	$("#skills li").each(function(){
-		$(this).css("cursor","pointer");
-		$(this).bind("click",narrowSkills);
-	});
-}
+bio.display();
 
 work.display();
 
 projects.display();
 
 education.display();
-
-$('button').click(function(){
-
-});
 
 $("#mapDiv").append(googleMap);
