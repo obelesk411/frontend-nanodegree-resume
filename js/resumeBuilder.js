@@ -110,22 +110,22 @@ var work = {
 		"tags": ["PHP", "MySQL", "Javascript"]
 	}],
 	"display": function() {
-		for(job in this.jobs) {
+		this.jobs.forEach(function(job) {
 			$("#workExperience")
 				.append(HTMLworkStart)
 				.find(".work-entry:last")
-				.append(HTMLworkEmployer.replace("%data%",this.jobs[job].employer)
-					+HTMLworkTitle.replace("%data%",this.jobs[job].title))
-				.append(HTMLworkDates.replace("%data%",this.jobs[job].dates))
+				.append(HTMLworkEmployer.replace("%data%",job.employer)
+					+HTMLworkTitle.replace("%data%",job.title))
+				.append(HTMLworkDates.replace("%data%",job.dates))
 				.append('<div style="clear:both"></div>')
-				.append(HTMLworkLocation.replace("%data%",this.jobs[job].location))
-				.append(HTMLworkDescription.replace("%data%",this.jobs[job].description))
+				.append(HTMLworkLocation.replace("%data%",job.location))
+				.append(HTMLworkDescription.replace("%data%",job.description))
 				.append('<div style="clear:both"></div>');
 			
-			if(this.jobs[job].tags !== undefined) {
-				$(".work-entry:last").attr("skills",this.jobs[job].tags.join(" "));
+			if(job.tags !== undefined) {
+				$(".work-entry:last").attr("skills",job.tags.join(" "));
 			}
-		}
+		});
 	}
 };
 
@@ -170,16 +170,16 @@ var education = {
 	"display": function() {
 		$("#education").append(HTMLonlineClasses);
 
-		for(course in this.onlineCourses) {
+		this.onlineCourses.forEach(function(course) {
 			$("#education")
 				.append(HTMLschoolStart)
 				.find(".education-entry:last")
-				.append(HTMLonlineTitle.replace("%data%",this.onlineCourses[course].title)
-					+HTMLonlineSchool.replace("%data%",this.onlineCourses[course].school))
-				.append(HTMLonlineDates.replace("%data%",this.onlineCourses[course].dates))
-				.append(HTMLonlineURL.replace("%data%",this.onlineCourses[course].url))
+				.append(HTMLonlineTitle.replace("%data%",course.title)
+					+HTMLonlineSchool.replace("%data%",course.school))
+				.append(HTMLonlineDates.replace("%data%",course.dates))
+				.append(HTMLonlineURL.replace("%data%",course.url))
 				.append('<div style="clear:both"></div>');
-		}
+		});
 	}
 };
 
@@ -206,16 +206,16 @@ var projects = {
 		"images": "images/the_projects.jpg"
 	}],
 	"display": function() {
-		for(project in this.projects) {
+		this.projects.forEach(function(project) {
 			$('#projects')
 				.append(HTMLprojectStart)
 				.find(".project-entry:last")
-				.append(HTMLprojectTitle.replace("%data%",this.projects[project].title))
-				.append(HTMLprojectDates.replace("%data%",this.projects[project].dates))
-				.append(HTMLprojectDescription.replace("%data%",this.projects[project].description))
-				.append(HTMLprojectImage.replace("%data%",this.projects[project].images))
+				.append(HTMLprojectTitle.replace("%data%",project.title))
+				.append(HTMLprojectDates.replace("%data%",project.dates))
+				.append(HTMLprojectDescription.replace("%data%",project.description))
+				.append(HTMLprojectImage.replace("%data%",project.images))
 
-		}
+		});
 	}
 };
 
