@@ -32,9 +32,9 @@ var bio = {
 			.append(HTMLmobile.replace("%data%",this.contacts.phone));
 
 		if(this.skills.length !== 0) {
-			for(skill in this.skills) {
-				$("#skills").append(HTMLskills.replace("%data%",this.skills[skill]));
-			}
+			this.skills.forEach(function(skill) {
+				$("#skills").append(HTMLskills.replace("%data%",skill));
+			});
 
 			$("#skills li").each(function(){
 				$(this).css("cursor","pointer");
@@ -114,8 +114,7 @@ var work = {
 			$("#workExperience")
 				.append(HTMLworkStart)
 				.find(".work-entry:last")
-				.append(HTMLworkEmployer.replace("%data%",job.employer)
-					+HTMLworkTitle.replace("%data%",job.title))
+				.append(HTMLworkEmployer.replace("%data%",job.employer)+HTMLworkTitle.replace("%data%",job.title))
 				.append(HTMLworkDates.replace("%data%",job.dates))
 				.append('<div style="clear:both"></div>')
 				.append(HTMLworkLocation.replace("%data%",job.location))
@@ -174,8 +173,7 @@ var education = {
 			$("#education")
 				.append(HTMLschoolStart)
 				.find(".education-entry:last")
-				.append(HTMLonlineTitle.replace("%data%",course.title)
-					+HTMLonlineSchool.replace("%data%",course.school))
+				.append(HTMLonlineTitle.replace("%data%",course.title)+HTMLonlineSchool.replace("%data%",course.school))
 				.append(HTMLonlineDates.replace("%data%",course.dates))
 				.append(HTMLonlineURL.replace("%data%",course.url))
 				.append('<div style="clear:both"></div>');
@@ -213,7 +211,7 @@ var projects = {
 				.append(HTMLprojectTitle.replace("%data%",project.title))
 				.append(HTMLprojectDates.replace("%data%",project.dates))
 				.append(HTMLprojectDescription.replace("%data%",project.description))
-				.append(HTMLprojectImage.replace("%data%",project.images))
+				.append(HTMLprojectImage.replace("%data%",project.images));
 
 		});
 	}
@@ -240,7 +238,7 @@ var narrowSkills = function() {
 	$('.work-entry').each(function(){
 		skills = $(this).attr('skills');
 
-		if(typeof skills == undefined || typeof skills == false) {
+		if(typeof skills === undefined || typeof skills === false) {
 			$(this).hide();
 		} else if(skills.search(skill) != -1) {
 			$(this).show();

@@ -1,0 +1,111 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save-dev',
+1 verbose cli   'gulp-clean-css' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.37
+4 verbose cache add [ 'gulp-clean-css', null ]
+5 verbose cache add name=undefined spec="gulp-clean-css" args=["gulp-clean-css",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'gulp-clean-css',
+6 verbose parsed url   path: 'gulp-clean-css',
+6 verbose parsed url   href: 'gulp-clean-css' }
+7 silly lockFile d4014c9d-gulp-clean-css gulp-clean-css
+8 verbose lock gulp-clean-css /Users/adam/.npm/d4014c9d-gulp-clean-css.lock
+9 silly lockFile d4014c9d-gulp-clean-css gulp-clean-css
+10 silly lockFile d4014c9d-gulp-clean-css gulp-clean-css
+11 verbose addNamed [ 'gulp-clean-css', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 3f533008-gulp-clean-css gulp-clean-css@
+14 verbose lock gulp-clean-css@ /Users/adam/.npm/3f533008-gulp-clean-css.lock
+15 silly addNameRange { name: 'gulp-clean-css', range: '*', hasData: false }
+16 verbose request where is /gulp-clean-css
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id f64ff7b4a2900177
+19 verbose url raw /gulp-clean-css
+20 verbose url resolving [ 'https://registry.npmjs.org/', './gulp-clean-css' ]
+21 verbose url resolved https://registry.npmjs.org/gulp-clean-css
+22 verbose request where is https://registry.npmjs.org/gulp-clean-css
+23 info trying registry request attempt 1 at 18:12:20
+24 verbose etag "AD6S2VQU2AF4CFYVXF24BJD7M"
+25 http GET https://registry.npmjs.org/gulp-clean-css
+26 http 200 https://registry.npmjs.org/gulp-clean-css
+27 silly registry.get cb [ 200,
+27 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 silly registry.get     etag: '"4QH7IDJ0TSBT6UIRDHAP8RSD6"',
+27 silly registry.get     'content-type': 'application/json',
+27 silly registry.get     'content-encoding': 'gzip',
+27 silly registry.get     'cache-control': 'max-age=300',
+27 silly registry.get     'content-length': '5244',
+27 silly registry.get     'accept-ranges': 'bytes',
+27 silly registry.get     date: 'Wed, 14 Sep 2016 00:12:21 GMT',
+27 silly registry.get     via: '1.1 varnish',
+27 silly registry.get     age: '34',
+27 silly registry.get     connection: 'keep-alive',
+27 silly registry.get     'x-served-by': 'cache-den6027-DEN',
+27 silly registry.get     'x-cache': 'HIT',
+27 silly registry.get     'x-cache-hits': '1',
+27 silly registry.get     'x-timer': 'S1473811941.187935,VS0,VE0',
+27 silly registry.get     vary: 'Accept-Encoding' } ]
+28 silly addNameRange number 2 { name: 'gulp-clean-css', range: '*', hasData: true }
+29 silly addNameRange versions [ 'gulp-clean-css',
+29 silly addNameRange   [ '1.0.0',
+29 silly addNameRange     '1.0.1',
+29 silly addNameRange     '1.0.2',
+29 silly addNameRange     '2.0.0',
+29 silly addNameRange     '2.0.1',
+29 silly addNameRange     '2.0.2',
+29 silly addNameRange     '2.0.3',
+29 silly addNameRange     '2.0.4',
+29 silly addNameRange     '2.0.5',
+29 silly addNameRange     '2.0.6',
+29 silly addNameRange     '2.0.7',
+29 silly addNameRange     '2.0.8',
+29 silly addNameRange     '2.0.9',
+29 silly addNameRange     '2.0.10',
+29 silly addNameRange     '2.0.11',
+29 silly addNameRange     '2.0.12' ] ]
+30 verbose addNamed [ 'gulp-clean-css', '2.0.12' ]
+31 verbose addNamed [ '2.0.12', '2.0.12' ]
+32 silly lockFile b3a86a73-gulp-clean-css-2-0-12 gulp-clean-css@2.0.12
+33 verbose lock gulp-clean-css@2.0.12 /Users/adam/.npm/b3a86a73-gulp-clean-css-2-0-12.lock
+34 silly lockFile a7458cb0-an-css-gulp-clean-css-2-0-12-tgz https://registry.npmjs.org/gulp-clean-css/-/gulp-clean-css-2.0.12.tgz
+35 verbose lock https://registry.npmjs.org/gulp-clean-css/-/gulp-clean-css-2.0.12.tgz /Users/adam/.npm/a7458cb0-an-css-gulp-clean-css-2-0-12-tgz.lock
+36 verbose addRemoteTarball [ 'https://registry.npmjs.org/gulp-clean-css/-/gulp-clean-css-2.0.12.tgz',
+36 verbose addRemoteTarball   'c43522154bccc66b4a136dc928d77aa0819a1a67' ]
+37 info retry fetch attempt 1 at 18:12:21
+38 verbose fetch to= /var/folders/d_/y3b36tmj1bv2yyj2plrgllv40000gn/T/npm-33007-j33ICARi/registry.npmjs.org/gulp-clean-css/-/gulp-clean-css-2.0.12.tgz
+39 http GET https://registry.npmjs.org/gulp-clean-css/-/gulp-clean-css-2.0.12.tgz
+40 http 200 https://registry.npmjs.org/gulp-clean-css/-/gulp-clean-css-2.0.12.tgz
+41 silly lockFile a7458cb0-an-css-gulp-clean-css-2-0-12-tgz https://registry.npmjs.org/gulp-clean-css/-/gulp-clean-css-2.0.12.tgz
+42 silly lockFile a7458cb0-an-css-gulp-clean-css-2-0-12-tgz https://registry.npmjs.org/gulp-clean-css/-/gulp-clean-css-2.0.12.tgz
+43 silly lockFile b3a86a73-gulp-clean-css-2-0-12 gulp-clean-css@2.0.12
+44 silly lockFile b3a86a73-gulp-clean-css-2-0-12 gulp-clean-css@2.0.12
+45 silly lockFile 3f533008-gulp-clean-css gulp-clean-css@
+46 silly lockFile 3f533008-gulp-clean-css gulp-clean-css@
+47 error Error: EACCES, mkdir '/Users/adam/.npm/gulp-clean-css/2.0.12'
+47 error  { [Error: EACCES, mkdir '/Users/adam/.npm/gulp-clean-css/2.0.12']
+47 error   errno: 3,
+47 error   code: 'EACCES',
+47 error   path: '/Users/adam/.npm/gulp-clean-css/2.0.12' }
+48 error Please try running this command again as root/Administrator.
+49 error System Darwin 14.5.0
+50 error command "node" "/usr/local/bin/npm" "install" "--save-dev" "gulp-clean-css"
+51 error cwd /Users/adam/Documents/www/frontend-nanodegree-resume
+52 error node -v v0.10.37
+53 error npm -v 1.4.28
+54 error path /Users/adam/.npm/gulp-clean-css/2.0.12
+55 error code EACCES
+56 error errno 3
+57 error stack Error: EACCES, mkdir '/Users/adam/.npm/gulp-clean-css/2.0.12'
+58 verbose exit [ 3, true ]
