@@ -2,6 +2,8 @@
 This is empty on purpose! Your code to build the resume will go here.
  */
 
+var data = "%data%";
+
 var bio = {
     "name": "Adam McMahon",
     "role": "Fullstack Web Developer",
@@ -13,27 +15,27 @@ var bio = {
         "phone": "ask"
     },
     "welcomeMessage": "More than 8 years of experience",
-    "pic": "images/me.png",
+    "biopic": "images/me.png",
     "skills": ["PHP", "MySQL", "HTML5", "CSS", "Javascript", "MongoDB", "Wordpress", "Codeigniter"],
     "age": 28,
     "display": function() {
 
         $("#header")
-            .prepend(HTMLheaderName.replace("%data%", this.name) + HTMLheaderRole.replace("%data%", this.role))
-            .append(HTMLbioPic.replace("%data%", this.pic))
-            .append(HTMLwelcomeMsg.replace("%data%", this.welcomeMessage))
+            .prepend(HTMLheaderName.replace(data, this.name) + HTMLheaderRole.replace(data, this.role))
+            .append(HTMLbioPic.replace(data, this.biopic))
+            .append(HTMLwelcomeMsg.replace(data, this.welcomeMessage))
             .append(HTMLskillsStart);
 
         $("#topContacts")
-            .append(HTMLgithub.replace("%data%", this.contacts.github))
-            .append(HTMLblog.replace("%data%", this.contacts.website))
-            .append(HTMLlocation.replace("%data%", this.contacts.location))
-            .append(HTMLemail.replace("%data%", this.contacts.email))
-            .append(HTMLmobile.replace("%data%", this.contacts.phone));
+            .append(HTMLgithub.replace(data, this.contacts.github))
+            .append(HTMLblog.replace(data, this.contacts.website))
+            .append(HTMLlocation.replace(data, this.contacts.location))
+            .append(HTMLemail.replace(data, this.contacts.email))
+            .append(HTMLmobile.replace(data, this.contacts.phone));
 
         if (this.skills.length !== 0) {
             this.skills.forEach(function(skill) {
-                $("#skills").append(HTMLskills.replace("%data%", skill));
+                $("#skills").append(HTMLskills.replace(data, skill));
             });
 
             $("#skills li").each(function() {
@@ -114,11 +116,11 @@ var work = {
             $("#workExperience")
                 .append(HTMLworkStart)
                 .find(".work-entry:last")
-                .append(HTMLworkEmployer.replace("%data%", job.employer) + HTMLworkTitle.replace("%data%", job.title))
-                .append(HTMLworkDates.replace("%data%", job.dates))
+                .append(HTMLworkEmployer.replace(data, job.employer) + HTMLworkTitle.replace(data, job.title))
+                .append(HTMLworkDates.replace(data, job.dates))
                 .append('<div style="clear:both"></div>')
-                .append(HTMLworkLocation.replace("%data%", job.location))
-                .append(HTMLworkDescription.replace("%data%", job.description))
+                .append(HTMLworkLocation.replace(data, job.location))
+                .append(HTMLworkDescription.replace(data, job.description))
                 .append('<div style="clear:both"></div>');
 
             if (job.tags !== undefined) {
@@ -129,6 +131,14 @@ var work = {
 };
 
 var education = {
+    "schools": [{
+        "name": "Union County College",
+        "location": "Cranford, NJ",
+        "degree": "Associates",
+        "major": "Computer Science",
+        "dates": "2008",
+        "url": "http://www.ucc.edu/"
+    }],
     "onlineCourses": [{
         "title": "Front-end Developer Nanodegree",
         "school": "Udacity",
@@ -167,15 +177,28 @@ var education = {
         "location": "Cambridge, MA"
     }],
     "display": function() {
+
+        this.schools.forEach(function(school) {
+            $("#education")
+                .append(HTMLschoolStart)
+                .find(".education-entry:last")
+                .append(HTMLschoolName.replace(data, school.name))
+                .append(HTMLschoolDegree.replace(data, school.degree))
+                .append(HTMLschoolDates.replace(data, school.dates))
+                .append(HTMLschoolLocation.replace(data, school.location))
+                .append(HTMLschoolMajor.replace(data, school.major))
+                .append(HTMLonlineURL.replace(data, school.url));
+        });
+
         $("#education").append(HTMLonlineClasses);
 
         this.onlineCourses.forEach(function(course) {
             $("#education")
                 .append(HTMLschoolStart)
                 .find(".education-entry:last")
-                .append(HTMLonlineTitle.replace("%data%", course.title) + HTMLonlineSchool.replace("%data%", course.school))
-                .append(HTMLonlineDates.replace("%data%", course.dates))
-                .append(HTMLonlineURL.replace("%data%", course.url))
+                .append(HTMLonlineTitle.replace(data, course.title) + HTMLonlineSchool.replace(data, course.school))
+                .append(HTMLonlineDates.replace(data, course.dates))
+                .append(HTMLonlineURL.replace(data, course.url))
                 .append('<div style="clear:both"></div>');
         });
     }
@@ -186,32 +209,32 @@ var projects = {
         "title": "Pest Tracker",
         "dates": "2007",
         "description": "A tracking system for pesticide usage for the county",
-        "images": "images/the_projects.jpg"
+        "images": ["images/the_projects.jpg"]
     }, {
         "title": "Web Scraper",
         "dates": "2008",
         "description": "A scaper that pulls thousands of complaints from a consumer complaint website",
-        "images": "images/the_projects.jpg"
+        "images": ["images/the_projects.jpg"]
     }, {
         "title": "Refundo",
         "dates": "2011",
         "description": "Tax refund software",
-        "images": "images/the_projects.jpg"
+        "images": ["images/the_projects.jpg"]
     }, {
         "title": "Pinterest Clone",
         "dates": "2015",
         "description": "A Pinterest clone build on Rails",
-        "images": "images/the_projects.jpg"
+        "images": ["images/the_projects.jpg"]
     }],
     "display": function() {
         this.projects.forEach(function(project) {
             $('#projects')
                 .append(HTMLprojectStart)
                 .find(".project-entry:last")
-                .append(HTMLprojectTitle.replace("%data%", project.title))
-                .append(HTMLprojectDates.replace("%data%", project.dates))
-                .append(HTMLprojectDescription.replace("%data%", project.description))
-                .append(HTMLprojectImage.replace("%data%", project.images));
+                .append(HTMLprojectTitle.replace(data, project.title))
+                .append(HTMLprojectDates.replace(data, project.dates))
+                .append(HTMLprojectDescription.replace(data, project.description))
+                .append(HTMLprojectImage.replace(data, project.images));
 
         });
     }
