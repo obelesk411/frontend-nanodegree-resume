@@ -12,7 +12,7 @@ var bio = {
         "website": "https://mcmahonadam.com/",
         "location": "Loveland, CO",
         "email": "ask",
-        "phone": "ask"
+        "mobile": "ask"
     },
     "welcomeMessage": "More than 8 years of experience",
     "biopic": "images/me.png",
@@ -26,12 +26,12 @@ var bio = {
             .append(HTMLwelcomeMsg.replace(data, this.welcomeMessage))
             .append(HTMLskillsStart);
 
-        $("#topContacts")
+        $("#topContacts, #footerContacts")
             .append(HTMLgithub.replace(data, this.contacts.github))
             .append(HTMLblog.replace(data, this.contacts.website))
             .append(HTMLlocation.replace(data, this.contacts.location))
             .append(HTMLemail.replace(data, this.contacts.email))
-            .append(HTMLmobile.replace(data, this.contacts.phone));
+            .append(HTMLmobile.replace(data, this.contacts.mobile));
 
         if (this.skills.length !== 0) {
             this.skills.forEach(function(skill) {
@@ -135,7 +135,7 @@ var education = {
         "name": "Union County College",
         "location": "Cranford, NJ",
         "degree": "Associates",
-        "major": "Computer Science",
+        "majors": ["Computer Science"],
         "dates": "2008",
         "url": "http://www.ucc.edu/"
     }],
@@ -234,7 +234,7 @@ var projects = {
                 .append(HTMLprojectTitle.replace(data, project.title))
                 .append(HTMLprojectDates.replace(data, project.dates))
                 .append(HTMLprojectDescription.replace(data, project.description))
-                .append(HTMLprojectImage.replace(data, project.images));
+                .append(HTMLprojectImage.replace(data, project.images[0]));
 
         });
     }
